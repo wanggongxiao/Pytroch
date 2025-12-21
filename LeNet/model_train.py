@@ -1,8 +1,6 @@
 import copy
 import time
 
-from anaconda_navigator.utils.download_manager import Download
-
 from model import LeNet
 import torch
 from torchvision import transforms
