@@ -7,7 +7,7 @@ from torchvision import transforms
 import torch.utils.data as Data
 import numpy as np
 import matplotlib.pyplot as plt
-from model import LeNet
+from model import AlexNet
 import torch.nn as nn
 import pandas as pd
 
@@ -15,7 +15,7 @@ import pandas as pd
 def train_val_data_process():
     train_data = FashionMNIST(root='./data',
                               train=True,
-                              transform=transforms.Compose([transforms.Resize(size=28), transforms.ToTensor()]),
+                              transform=transforms.Compose([transforms.Resize(size=227), transforms.ToTensor()]),
                               download=True)
 
     train_data, val_data = Data.random_split(train_data, [round(0.8*len(train_data)), round(0.2*len(train_data))])
@@ -182,9 +182,9 @@ def matplot_acc_loss(train_process):
 
 if __name__ == '__main__':
     # 加载需要的模型
-    LeNet = LeNet()
+    AlexNet = AlexNet()
     # 加载数据集
     train_data, val_data = train_val_data_process()
     # 利用现有的模型进行模型的训练
-    train_process = train_model_process(LeNet, train_data, val_data, num_epochs=20)
+    train_process = train_model_process(AlexNet, train_data, val_data, num_epochs=20)
     matplot_acc_loss(train_process)

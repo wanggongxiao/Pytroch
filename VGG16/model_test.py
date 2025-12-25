@@ -48,7 +48,7 @@ def test_model_process(model, test_data_load):
 if __name__ == "__main__":
     # 加载模型
     model = LeNet()
-    model.load_state_dict(torch.load('best_model.pth'))
+    model.load_state_dict(torch.load('../LeNet/best_model.pth'))
     # 加载数据
     test_data_load = test_load_process()
     test_model_process(model,test_data_load)

@@ -7,7 +7,7 @@ from torchvision import transforms
 import torch.utils.data as Data
 import numpy as np
 import matplotlib.pyplot as plt
-from model import LeNet
+from model import VGG16
 import torch.nn as nn
 import pandas as pd
 
@@ -151,7 +151,7 @@ def train_model_process(model, train_dataloader, val_dataloader, num_epochs):
         print("训练和验证耗费的时间{:.0f}m{:.0f}s".format(time_use//60, time_use%60))
 
     # 选择最优参数，保存最优参数的模型
-    torch.save(best_model_wts, "./best_model.pth")
+    torch.save(best_model_wts, "../LeNet/best_model.pth")
 
     train_process = pd.DataFrame(data={"epoch":range(num_epochs),
                                        "train_loss_all":train_loss_all,
@@ -182,9 +182,9 @@ def matplot_acc_loss(train_process):
 
 if __name__ == '__main__':
     # 加载需要的模型
-    LeNet = LeNet()
+    VGG16 = VGG16()
     # 加载数据集
     train_data, val_data = train_val_data_process()
     # 利用现有的模型进行模型的训练
-    train_process = train_model_process(LeNet, train_data, val_data, num_epochs=20)
+    train_process = train_model_process(VGG16, train_data, val_data, num_epochs=20)
     matplot_acc_loss(train_process)

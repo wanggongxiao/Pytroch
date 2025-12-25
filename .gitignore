@@ -1,0 +1,6 @@
+./AlexNet/data/*
+./VGG/data/*
+
+
+./AlexNet/*.pth
+./VGG/*.pth
